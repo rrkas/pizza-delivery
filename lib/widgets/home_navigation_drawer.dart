@@ -14,12 +14,12 @@ class HomeNavigationDrawer extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      child: Text('S'),
+                      child: Text(''),
                     ),
                     Expanded(
                       child: Column(
                         children: [
-                          Text('Sanjit Acahrya'),
+                          Text(''),
                           Text(''),
                         ],
                       ),

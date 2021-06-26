@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/widgets/home_navigation_drawer.dart';
 
-import '../models/demo_data.dart';
 import '../widgets/home_float_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,13 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [],
             ),
           ),
-          ...(DemoData.pizzas[true]?.map((e) => Text(e.name))?.toList() ?? []),
-          Divider(),
-          ...(DemoData.pizzas[false]?.map((e) => Text(e.name))?.toList() ?? []),
-          Divider(),
-          ...(DemoData.beverages?.map((e) => Text(e.name))?.toList() ?? []),
-          Divider(),
-          ...(DemoData.toppings?.map((e) => Text(e.name))?.toList() ?? []),
         ],
       ),
       floatingActionButton: _HomeFloatingWidget(),

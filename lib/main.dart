@@ -24,6 +24,15 @@ class MyApp extends StatelessWidget {
           color: Colors.deepOrange,
         ),
         primaryColor: Colors.deepOrange,
+        snackBarTheme: SnackBarThemeData(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.deepOrange,
+          contentTextStyle: TextStyle(fontSize: 16),
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
       ),
       initialRoute: SplashScreen.routeName,
       routes: {

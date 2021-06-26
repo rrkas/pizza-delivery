@@ -1,0 +1,21 @@
+name,description,imageFileName,veg,price_rs
+Margherita,"A hugely popular margherita, with a deliciously tangy single cheese topping",Margherit.jpg,true,395
+Double Cheese Margherita,"The ever-popular Margherita - loaded with extra cheese... oodies of it!",Double_Cheese_Margherita.jpg,true,400
+Farm House,"A pizza that goes ballistic on veggies! Check out this mouth watering overload of crunchy, crisp capsicum, succulent mushrooms and fresh tomatoes",Farmhouse.jpg,true,500
+Peppy Paneer,"Chunky paneer with crisp capsicum and spicy red pepper - quite a mouthful!",Peppy_Paneer.jpg,true,120
+Mexican Green Wave,"A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes and jalapeno with a liberal sprinkling of exotic Mexican herbs.",Mexican_Green_Wave.jpg,true,340
+Veg Extravaganza,"A pizza that decidedly staggers under an overload of golden corn, exotic black olives, crunchy onions, crisp capsicum, succulent mushrooms, juicyfresh tomatoes and jalapeno - with extra cheese to go all around.",Veg_Extravaganz.jpg,true,240
+CHEESE N CORN,"Cheese I Golden Corn",Corn_&_Cheese.jpg,true,230
+PANEER MAKHANI,"Paneer and Capsicum on Makhani Sauce",Paneer_Makhni.jpg,true,160
+VEGGIE PARADISE,"Goldern Corn, Black Olives, Capsicum & Red Paprika",Digital_Veggie_Paradise_olo_266x265.jpg,true,280
+FRESH VEGGIE,"Onion I Capsicum",Fresh_Veggie.jpg,true,240
+Indi Tandoori Paneer,"It is hot. It is spicy. It is oh-so-Indian. Tandoori paneer with capsicum I red paprika I mint mayo",IndianTandooriPaneer.jpg,true,210
+Deluxe Veggie,"For a vegetarian looking for a BIG treat that goes easy on the spices, this one's got it all.. The onions, the capsicum, those delectable mushrooms - with paneer and golden corn to top it all.",Deluxe_Veggie.jpg,true,260
+PEPPER BARBECUE CHICKEN,"Pepper Barbecue Chicken I Cheese",Pepper_Barbeque.jpg,false,340
+CHICKEN SAUSAGE,"Chicken Sausage I Cheese",Chicken_Sausage.jpg,false,380
+Chicken Golden Delight,"Mmm! Barbeque chicken with a topping of golden corn loaded with extra cheese. Worth its weight in gold!",Chicken_Golden_Delight.jpg,false,400
+Non Veg Supreme,"Bite into supreme delight of Black Olives, Onions, Grilled Mushrooms, Pepper BBQ Chicken, Peri-Peri Chicken, Grilled Chicken Rashers",Non-Veg_Supreme.jpg,false,350
+Chicken Dominator,"Treat your taste buds with Double Pepper Barbecue Chicken, Peri-Peri Chicken, Chicken Tikka & Grilled Chicken Rashers",Dominator.jpg,false,370
+PEPPER BARBECUE & ONION,"Pepper Barbecue Chicken I Onion",Pepper_Barbeque_&_Onion.jpg,false,340
+CHICKEN FIESTA,"Grilled Chicken Rashers I Peri-Peri Chicken I Onion I Capsicum",chunky-chicken.png,false,330
+Indi Chicken Tikka,"The wholesome flavour of tandoori masala with Chicken tikka I onion I red paprika I mint mayo",IndianChickenTikka.jpg,false,340

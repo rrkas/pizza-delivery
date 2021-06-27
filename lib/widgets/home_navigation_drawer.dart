@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
+import 'package:pizza_delivery/screens/orders_screen.dart';
 import 'package:pizza_delivery/services/auth_service.dart';
 
 class HomeNavigationDrawer extends StatelessWidget {
@@ -70,6 +71,7 @@ class HomeNavigationDrawer extends StatelessWidget {
                     _DrawerItem(
                       icon: Icons.compare_arrows,
                       name: 'Order History',
+                      routeName: OrdersScreen.routeName,
                     ),
                     _DrawerItem(
                       icon: Icons.favorite_border,
@@ -101,7 +103,10 @@ class _DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (routeName != null) Navigator.of(context).pushNamed(routeName);
+        if (routeName != null) {
+          Navigator.of(context).pop();
+          Navigator.of(context).pushNamed(routeName);
+        }
       },
       child: Container(
         color: Colors.white,

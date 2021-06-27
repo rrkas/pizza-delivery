@@ -15,17 +15,18 @@ class DemoData {
   static List<Topping> toppings = [];
 
   static Future init() async {
+    int totalCount = 6, vegCount = 4;
     await _loadPizza();
     await _loadPizzaMania();
     await _loadBeverages();
     await _loadToppings();
     final t = pizzas[true] + pizzas[false] + pizzaManias[true] + pizzaManias[false];
-    while (bestSellers.length < 4) {
+    while (bestSellers.length < vegCount) {
       final idx = Random().nextInt(t.length);
       if (bestSellers.contains(t[idx]) || !t[idx].veg) continue;
       bestSellers.add(t[idx]);
     }
-    while (bestSellers.length < 6) {
+    while (bestSellers.length < totalCount) {
       final idx = Random().nextInt(t.length);
       if (bestSellers.contains(t[idx]) || t[idx].veg) continue;
       bestSellers.add(t[idx]);
@@ -95,5 +96,20 @@ class DemoData {
     } catch (e) {
       print(e);
     }
+  }
+
+  static Pizza findPizzaById(int id) {
+    return (pizzas[true] + pizzas[false] + pizzaManias[true] + pizzaManias[false]).firstWhere(
+      (element) => element.id == id,
+      orElse: () => null,
+    );
+  }
+
+  static Beverage findBeverageById(int id) {
+    return beverages.firstWhere((element) => element.id == id, orElse: () => null);
+  }
+
+  static Topping findToppingById(int id) {
+    return toppings.firstWhere((element) => element.id == id, orElse: () => null);
   }
 }

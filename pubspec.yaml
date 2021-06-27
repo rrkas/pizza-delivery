@@ -9,13 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
-#  swipedetector: ^1.2.0
+  cupertino_icons:
   provider:
-  shared_preferences: ^0.5.12
-#  flare_flutter:
-  csv: ^4.0.0
-  fluttericon: ^1.0.7
+  shared_preferences:
+  csv:
+  sqflite:
+  fluttericon:
+  path:
+  google_fonts:
+  intl:
 
 dev_dependencies:
   flutter_test:

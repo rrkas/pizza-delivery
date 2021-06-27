@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/models/demo_data.dart';
+import 'package:pizza_delivery/models/order.dart';
+import 'package:pizza_delivery/services/database_services.dart';
 import 'package:pizza_delivery/utils/ref_utils.dart';
 import 'package:pizza_delivery/widgets/home_bestseller_widget.dart';
 import 'package:pizza_delivery/widgets/home_explore_menu_widget.dart';
@@ -87,7 +89,29 @@ class _HomeFloatingWidget extends StatelessWidget {
               topLeft: Radius.circular(100),
               bottomLeft: Radius.circular(100),
             ),
-            onClick: () {},
+            onClick: () async {
+              final order = Order(
+                pizzaManias: {
+                  DemoData.pizzaManias[true].first: 4,
+                  // DemoData.pizzaManias[false].first: 3,
+                },
+                // pizzas: {
+                //   DemoData.pizzas[true].first: 2,
+                //   DemoData.pizzas[false].last: 5,
+                // },
+                toppings: {
+                  // DemoData.toppings.first: 4,
+                  DemoData.toppings.last: 2,
+                },
+                beverages: {
+                  DemoData.beverages.first: 6,
+                  // DemoData.beverages.last: 3,
+                },
+              );
+              OrderDatabaseHandler.insertOrder(order);
+              final orders = await OrderDatabaseHandler.orders;
+              for (var o in orders) print(o);
+            },
             icon: Icons.local_pizza,
             text: 'Menu',
           ),

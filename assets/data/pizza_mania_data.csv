@@ -1,0 +1,12 @@
+name,desc,imgFileName,isveg,price_rs
+TOMATO,"Juicy tomato in a flavourful combination with cheese | tangy sauce",pizza_mania_tomato.png,true,320
+VEG LOADED,"Tomato | Grilled Mushroom |Jalapeno |Golden Corn | Beans in a fresh pan crust",PrimeLoadedL.jpg,true,330
+CHEESY,"Orange Cheddar Cheese | Mozzarella",PrimeCheesyL.jpg,true,340
+CAPSICUM,"Capsicum",CapsicumVeg.jpg,true,280
+ONION,"Onion",onion_veg.jpg,true,260
+GOLDEN CORN,"Golden Corn",golden_corn_veg.jpg,true,290
+PANEER & ONION,"Creamy Paneer | Onion",Paneer_Special.jpg,true,300
+CHEESE N TOMATO,"A delectable combination of cheese and juicy tomato",cheese_and_tomato.png,true,270
+NON VEG LOADED,"Peri - Peri chicken | Pepper Barbecue | Chicken Sausage in a fresh pan crust",LoadedC.jpg,false,320
+CHICKEN SAUSAGE,"Chicken Sausage | Cheese",266X265pix_Chicken_Sausage.jpg,false,330
+PEPPER BARBECUE CHICKEN,"Pepper Barbecue Chicken",PepperBarbecueChicken.jpg,false,350

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_delivery/models/demo_data.dart';
+import 'package:pizza_delivery/utils/ref_utils.dart';
+import 'package:pizza_delivery/widgets/home_bestseller_widget.dart';
+import 'package:pizza_delivery/widgets/home_explore_menu_widget.dart';
 import 'package:pizza_delivery/widgets/home_navigation_drawer.dart';
 
 import '../widgets/home_float_button.dart';
@@ -13,20 +17,53 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final bestSellers = DemoData.bestSellers;
     return Scaffold(
       drawer: HomeNavigationDrawer(),
       appBar: AppBar(
         titleSpacing: 0,
-        title: Text('PizzaMan'),
+        title: Text(RefUtils.appName),
         // automaticallyImplyLeading: false,
       ),
       body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         children: [
+          _SectionHeading('Explore Menu'),
+          GridView.count(
+            physics: ScrollPhysics(),
+            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            shrinkWrap: true,
+            childAspectRatio: 1.7,
+            crossAxisCount: 2,
+            crossAxisSpacing: 0,
+            mainAxisSpacing: 0,
+            children: [
+              HomeExploreMenuWidget(
+                name: 'Veg Pizza',
+                imgName: 'pizza_slice.jpg',
+              ),
+              HomeExploreMenuWidget(
+                name: 'Non-Veg Pizza',
+                imgName: 'pizza_slice.jpg',
+              ),
+              HomeExploreMenuWidget(
+                name: 'Pizza Mania',
+                imgName: 'pizza_mania.png',
+              ),
+              HomeExploreMenuWidget(
+                name: 'Beverage',
+                imgName: 'beverages.jpg',
+              ),
+            ],
+          ),
+          _SectionHeading('Best Sellers'),
           Container(
-            height: 100,
-            child: ListView(
+            height: 270,
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(vertical: 5),
               scrollDirection: Axis.horizontal,
-              children: [],
+              itemBuilder: (_, idx) => HomeBestSellerWidget(bestSellers[idx]),
+              itemCount: bestSellers.length,
             ),
           ),
         ],
@@ -65,6 +102,27 @@ class _HomeFloatingWidget extends StatelessWidget {
             text: 'Cart',
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SectionHeading extends StatelessWidget {
+  final String heading;
+
+  const _SectionHeading(this.heading);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      child: Text(
+        heading,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.grey[600],
+        ),
       ),
     );
   }

@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           elevation: 0.0,
-          color: Colors.deepOrange,
+          color: Colors.deepOrange[800],
         ),
-        primaryColor: Colors.deepOrange,
+        primaryColor: Colors.deepOrange[800],
         snackBarTheme: SnackBarThemeData(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.deepOrange,

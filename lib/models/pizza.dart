@@ -1,6 +1,9 @@
 import 'dart:convert';
 
 class Pizza {
+  static int _count = 0;
+
+  int id;
   String name, desc, imgFile;
   bool veg;
   double priceINR;

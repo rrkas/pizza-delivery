@@ -21,7 +21,7 @@ class HomeFloatButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: borderRadius,
-          color: Colors.deepOrange,
+          color: Theme.of(context).primaryColor,
         ),
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
         child: Column(

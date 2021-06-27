@@ -15,6 +15,7 @@ dependencies:
   shared_preferences: ^0.5.12
 #  flare_flutter:
   csv: ^4.0.0
+  fluttericon: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +28,7 @@ flutter:
     - assets/images/
     - assets/images/beverages/
     - assets/images/pizzas/
+    - assets/images/menus/
     - assets/data/
 
 #  fonts:

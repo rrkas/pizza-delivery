@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
+import 'package:pizza_delivery/screens/cart_screen.dart';
 import 'package:pizza_delivery/screens/orders_screen.dart';
 import 'package:pizza_delivery/services/auth_service.dart';
 
@@ -62,6 +63,11 @@ class HomeNavigationDrawer extends StatelessWidget {
                     _DrawerItem(
                       icon: Icons.local_offer_outlined,
                       name: 'Deals & Offers',
+                    ),
+                    _DrawerItem(
+                      icon: Icons.shopping_cart,
+                      name: 'My Cart',
+                      routeName: CartScreen.routeName,
                     ),
                     Divider(),
                     _DrawerItem(

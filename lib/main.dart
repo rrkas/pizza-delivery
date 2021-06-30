@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/screens/auth_screen.dart';
+import 'package:pizza_delivery/screens/cart_screen.dart';
 import 'package:pizza_delivery/screens/orders_screen.dart';
 
 import 'models/demo_data.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         AuthScreen.routeName: (_) => AuthScreen(),
         HomeScreen.routeName: (_) => HomeScreen(),
         OrdersScreen.routeName: (_) => OrdersScreen(),
+        CartScreen.routeName: (_) => CartScreen(),
       },
     );
   }

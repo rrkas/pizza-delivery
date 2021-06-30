@@ -1,5 +1,7 @@
 import 'package:path/path.dart';
+import 'package:pizza_delivery/models/cart.dart';
 import 'package:pizza_delivery/models/order.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
 class OrderDatabaseHandler {
@@ -19,7 +21,8 @@ class OrderDatabaseHandler {
           'pizzaManias TEXT,'
           'beverages TEXT,'
           'toppings TEXT,'
-          'totalAmt REAL'
+          'totalAmt REAL,'
+          'orderStatus TEXT'
           ')',
         );
       },
@@ -38,5 +41,22 @@ class OrderDatabaseHandler {
     List<Map<String, dynamic>> data = await db.query(_tableName);
     data = data.reversed.toList();
     return data.map((e) => Order.fromDB(e)).toList();
+  }
+}
+
+class CartDatabaseHandler {
+  static const _spName = 'cart';
+
+  static Future<Cart> get getCart async {
+    final sp = await SharedPreferences.getInstance();
+    if (sp.containsKey(_spName)) {
+      return Cart.fromDB(sp.getString(_spName));
+    }
+    return Cart();
+  }
+
+  static Future<void> setCart(Cart cart) async {
+    final sp = await SharedPreferences.getInstance();
+    sp.setString(_spName, cart.toDB);
   }
 }

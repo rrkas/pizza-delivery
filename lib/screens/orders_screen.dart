@@ -48,8 +48,14 @@ class _OrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color bgcolor = _order.orderStatus == OrderStatus.Waiting
+        ? Colors.red[50]
+        : _order.orderStatus == OrderStatus.Processing
+            ? Colors.yellow[100]
+            : Colors.green[50];
     return Card(
       elevation: 4,
+      color: bgcolor,
       child: Container(
         padding: EdgeInsets.all(5),
         child: Column(
@@ -59,27 +65,39 @@ class _OrderWidget extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Row(
                 children: [
-                  Text(DateFormat('dd MMM yyyy').format(_order.datetime)),
+                  Text(
+                    DateFormat('dd MMM yyyy').format(_order.datetime),
+                    style: TextStyle(fontSize: 16),
+                  ),
                   Spacer(),
-                  Text(DateFormat('HH:mm:ss').format(_order.datetime) + ' IST'),
+                  Text(
+                    _order.orderStatus.toString().split('.').last,
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                  ),
+                  Spacer(),
+                  Text(
+                    DateFormat('HH:mm:ss').format(_order.datetime) + ' IST',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ],
               ),
             ),
+            SizedBox(height: 5),
             header,
-            if (_order.pizzas.isNotEmpty) ...[
-              sectionTitle('Pizza'),
-              ..._order.pizzas.entries.map((e) => pizzaItem(e)).toList(),
+            if (_order.pizzaManias.isNotEmpty) ...[
+              sectionTitle('Pizza Mania', bgcolor),
+              ..._order.pizzaManias.entries.map((e) => pizzaItem(e)).toList(),
             ],
             if (_order.pizzas.isNotEmpty) ...[
-              sectionTitle('Pizza Mania'),
+              sectionTitle('Pizza Mania', bgcolor),
               ..._order.pizzaManias.entries.map((e) => pizzaItem(e)).toList(),
             ],
             if (_order.toppings.isNotEmpty) ...[
-              sectionTitle('Toppings'),
+              sectionTitle('Toppings', bgcolor),
               ..._order.toppings.entries.map((e) => toppingItem(e)).toList(),
             ],
             if (_order.beverages.isNotEmpty) ...[
-              sectionTitle('Beverage'),
+              sectionTitle('Beverage', bgcolor),
               ..._order.beverages.entries.map((e) => beverageItem(e)).toList(),
             ],
             Divider(),
@@ -90,13 +108,13 @@ class _OrderWidget extends StatelessWidget {
     );
   }
 
-  Widget sectionTitle(String title) {
+  Widget sectionTitle(String title, Color bgcolor) {
     return Stack(
       alignment: Alignment.centerLeft,
       children: [
         Divider(indent: 40, thickness: 1, color: Colors.grey[400]),
         Container(
-          color: Colors.white,
+          color: bgcolor,
           margin: EdgeInsets.symmetric(vertical: 1),
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Text(

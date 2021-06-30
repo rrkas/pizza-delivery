@@ -6,6 +6,8 @@ import 'package:pizza_delivery/models/demo_data.dart';
 import 'package:pizza_delivery/models/pizza.dart';
 import 'package:pizza_delivery/models/topping.dart';
 
+enum OrderStatus { Waiting, Processing, Delivered }
+
 class Order {
   int id;
   DateTime datetime;
@@ -13,6 +15,7 @@ class Order {
   Map<Beverage, int> beverages;
   Map<Topping, int> toppings;
   double totalAmt;
+  OrderStatus orderStatus;
 
   Order.fromCart(Cart cart) {
     pizzas = cart.pizzas;
@@ -20,6 +23,7 @@ class Order {
     toppings = cart.toppings;
     beverages = cart.beverages;
     totalAmt = cart.totalAmt;
+    orderStatus = OrderStatus.Waiting;
   }
 
   Order({this.toppings, this.beverages, this.pizzas, this.pizzaManias}) {
@@ -29,6 +33,7 @@ class Order {
     pizzaManias?.forEach((key, value) => totalAmt += key.priceINR * value);
     beverages?.forEach((key, value) => totalAmt += key.priceINR * value);
     toppings?.forEach((key, value) => totalAmt += key.priceINR * value);
+    orderStatus = OrderStatus.Waiting;
   }
 
   Order.fromDB(Map<String, dynamic> map) {
@@ -71,6 +76,10 @@ class Order {
         ),
     );
     totalAmt = map['totalAmt'];
+    orderStatus = OrderStatus.values.firstWhere(
+      (element) => element.toString() == map['orderStatus'],
+      orElse: () => OrderStatus.Waiting,
+    );
   }
 
   Map<String, dynamic> get toDB {
@@ -97,6 +106,7 @@ class Order {
       'toppings': json.encode(t),
       'totalAmt': totalAmt,
       'datetime': datetime.toIso8601String(),
+      'orderStatus': orderStatus.toString(),
     };
   }
 

@@ -2,10 +2,10 @@ class Topping {
   static int _count = 0;
 
   int id;
-  String name, desc, imgFileName;
+  String name, desc, imgFile;
   double priceINR;
 
-  Topping({this.name, this.desc, this.priceINR, this.imgFileName}) {
+  Topping({this.name, this.desc, this.priceINR, this.imgFile}) {
     id = ++_count;
   }
 
@@ -13,10 +13,10 @@ class Topping {
     id = ++_count;
     name = d[0];
     desc = d[1];
-    imgFileName = 'assets/images/toppings/' + d[2];
+    imgFile = 'assets/images/toppings/' + d[2];
     priceINR = double.tryParse(d[3].toString());
   }
 
   @override
-  String toString() => 'Topping($id): $name | $desc | $imgFileName | $priceINR';
+  String toString() => 'Topping($id): $name | $desc | $imgFile | $priceINR';
 }

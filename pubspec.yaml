@@ -30,7 +30,8 @@ flutter:
     - assets/images/
     - assets/images/beverages/
     - assets/images/pizzas/
-    - assets/images/menus/
+    - assets/images/toppings/
+#    - assets/images/menus/
     - assets/data/
 
 #  fonts:

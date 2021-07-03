@@ -89,8 +89,8 @@ class _OrderWidget extends StatelessWidget {
               ..._order.pizzaManias.entries.map((e) => pizzaItem(e)).toList(),
             ],
             if (_order.pizzas.isNotEmpty) ...[
-              sectionTitle('Pizza Mania', bgcolor),
-              ..._order.pizzaManias.entries.map((e) => pizzaItem(e)).toList(),
+              sectionTitle('Pizza', bgcolor),
+              ..._order.pizzas.entries.map((e) => pizzaItem(e)).toList(),
             ],
             if (_order.toppings.isNotEmpty) ...[
               sectionTitle('Toppings', bgcolor),

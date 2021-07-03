@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizza_delivery/models/demo_data.dart';
 import 'package:pizza_delivery/models/pizza.dart';
+import 'package:pizza_delivery/services/database_services.dart';
 import 'package:pizza_delivery/utils/ref_utils.dart';
 
 class HomeBestSellerWidget extends StatelessWidget {
@@ -50,7 +52,22 @@ class HomeBestSellerWidget extends StatelessWidget {
               ],
             ),
             FlatButton(
-              onPressed: () {},
+              onPressed: () async {
+                final cart = await CartDatabaseHandler.getCart;
+                if (DemoData.pizzas[true].contains(pizza) || DemoData.pizzas[false].contains(pizza)) {
+                  cart.pizzas.update(pizza, (value) => value + 1, ifAbsent: () => 1);
+                } else {
+                  cart.pizzaManias.update(pizza, (value) => value + 1, ifAbsent: () => 1);
+                }
+                CartDatabaseHandler.setCart(cart);
+                Scaffold.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(
+                      content: Text(pizza.name + ' added to cart!'),
+                    ),
+                  );
+              },
               child: Text(
                 'Add To Cart',
                 style: TextStyle(

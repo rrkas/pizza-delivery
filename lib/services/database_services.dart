@@ -1,5 +1,6 @@
 import 'package:path/path.dart';
 import 'package:pizza_delivery/models/cart.dart';
+import 'package:pizza_delivery/models/fav.dart';
 import 'package:pizza_delivery/models/order.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
@@ -58,5 +59,22 @@ class CartDatabaseHandler {
   static Future<void> setCart(Cart cart) async {
     final sp = await SharedPreferences.getInstance();
     sp.setString(_spName, cart.toDB);
+  }
+}
+
+class FavDatabaseHandler {
+  static const _spName = 'fav';
+
+  static Future<Fav> get getFav async {
+    final sp = await SharedPreferences.getInstance();
+    if (sp.containsKey(_spName)) {
+      return Fav.fromDB(sp.getString(_spName));
+    }
+    return Fav();
+  }
+
+  static Future<void> setFav(Fav fav) async {
+    final sp = await SharedPreferences.getInstance();
+    sp.setString(_spName, fav.toDB);
   }
 }

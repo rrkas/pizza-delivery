@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:pizza_delivery/screens/cart_screen.dart';
+import 'package:pizza_delivery/screens/explore_menu_screen.dart';
+import 'package:pizza_delivery/screens/my_fav_screen.dart';
 import 'package:pizza_delivery/screens/orders_screen.dart';
 import 'package:pizza_delivery/services/auth_service.dart';
 
@@ -28,8 +30,8 @@ class HomeNavigationDrawer extends StatelessWidget {
                           CircleAvatar(
                             backgroundColor: Colors.white,
                             child: Text(
-                              auth == null ? '' : auth.name[0],
-                              style: TextStyle(fontSize: 25, color: Colors.deepOrange[900]),
+                              ((auth == null ? '' : auth.name).split(' ').map((e) => auth == null ? '' : e[0])).toList().join('').toUpperCase(),
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.deepOrange[900]),
                             ),
                           ),
                           SizedBox(width: 10),
@@ -59,11 +61,12 @@ class HomeNavigationDrawer extends StatelessWidget {
                     _DrawerItem(
                       icon: Icons.restaurant_menu,
                       name: 'Menu',
+                      routeName: ExploreMenuScreen.routeName,
                     ),
-                    _DrawerItem(
-                      icon: Icons.local_offer_outlined,
-                      name: 'Deals & Offers',
-                    ),
+                    // _DrawerItem(
+                    //   icon: Icons.local_offer_outlined,
+                    //   name: 'Deals & Offers',
+                    // ),
                     _DrawerItem(
                       icon: Icons.shopping_cart,
                       name: 'My Cart',
@@ -72,7 +75,7 @@ class HomeNavigationDrawer extends StatelessWidget {
                     Divider(),
                     _DrawerItem(
                       icon: Icons.not_listed_location_outlined,
-                      name: 'Track Order',
+                      name: 'Track Orders',
                     ),
                     _DrawerItem(
                       icon: Icons.compare_arrows,
@@ -82,12 +85,13 @@ class HomeNavigationDrawer extends StatelessWidget {
                     _DrawerItem(
                       icon: Icons.favorite_border,
                       name: 'My Favourites',
+                      routeName: MyFavScreen.routeName,
                     ),
                     Divider(),
                     _DrawerItem(
                       icon: Entypo.user,
                       name: 'Contact Us',
-                    )
+                    ),
                   ],
                 ),
               ),

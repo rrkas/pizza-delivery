@@ -10,7 +10,7 @@ class Fav {
   List<Beverage> beverages;
   List<Topping> toppings;
 
-  Fav({this.beverages, this.toppings, this.pizzaManias, this.pizzas}) {}
+  Fav({this.beverages = const [], this.toppings = const [], this.pizzaManias = const [], this.pizzas = const []});
 
   Fav.fromDB(String data) {
     final d = json.decode(data);
@@ -22,10 +22,10 @@ class Fav {
 
   String get toDB => json.encode(
         {
-          'pizzas': json.encode(pizzas?.map((e) => e.id)?.toList() ?? []),
-          'pizzaManias': json.encode(pizzaManias?.map((e) => e.id)?.toList() ?? []),
-          'toppings': json.encode(toppings?.map((e) => e.id)?.toList() ?? []),
-          'beverages': json.encode(beverages?.map((e) => e.id)?.toList() ?? []),
+          'pizzas': json.encode((pizzas?.map((e) => e.id)?.toList() ?? [])..sort()),
+          'pizzaManias': json.encode((pizzaManias?.map((e) => e.id)?.toList() ?? [])..sort()),
+          'toppings': json.encode((toppings?.map((e) => e.id)?.toList() ?? [])..sort()),
+          'beverages': json.encode((beverages?.map((e) => e.id)?.toList() ?? [])..sort()),
         },
       );
 }

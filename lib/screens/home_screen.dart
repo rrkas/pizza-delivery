@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/cart.dart';
 import 'package:pizza_delivery/models/demo_data.dart';
 import 'package:pizza_delivery/screens/cart_screen.dart';
-import 'package:pizza_delivery/screens/pizza_list_screen.dart';
-import 'package:pizza_delivery/services/database_services.dart';
+import 'package:pizza_delivery/screens/explore_menu_screen.dart';
 import 'package:pizza_delivery/utils/ref_utils.dart';
 import 'package:pizza_delivery/widgets/home_bestseller_widget.dart';
 import 'package:pizza_delivery/widgets/home_explore_menu_widget.dart';
@@ -45,18 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeExploreMenuWidget(
                 name: 'Veg Pizza',
                 imgName: 'pizza_slice.jpg',
-                routeName: PizzaListScreen.routeName,
-                items: DemoData.pizzas[true],
+                idx: 1,
               ),
               HomeExploreMenuWidget(
                 name: 'Non-Veg Pizza',
                 imgName: 'pizza_slice.jpg',
-                routeName: PizzaListScreen.routeName,
-                items: DemoData.pizzas[false],
+                idx: 2,
               ),
               HomeExploreMenuWidget(
                 name: 'Pizza Mania',
                 imgName: 'pizza_mania.png',
+                idx: 3,
               ),
               HomeExploreMenuWidget(
                 name: 'Beverage',
@@ -97,26 +94,8 @@ class _HomeFloatingWidget extends StatelessWidget {
               bottomLeft: Radius.circular(100),
             ),
             onClick: () async {
-              final cart = Cart(
-                pizzaManias: {
-                  DemoData.pizzaManias[true].first: 4,
-                  // DemoData.pizzaManias[false].first: 3,
-                },
-                pizzas: {
-                  DemoData.pizzas[true].first: 2,
-                  //   DemoData.pizzas[false].last: 5,
-                },
-                toppings: {
-                  // DemoData.toppings.first: 4,
-                  DemoData.toppings.last: 2,
-                },
-                beverages: {
-                  DemoData.beverages.first: 6,
-                  // DemoData.beverages.last: 3,
-                },
-              );
-              await CartDatabaseHandler.setCart(cart);
-              CartDatabaseHandler.getCart;
+              Scaffold.of(context).hideCurrentSnackBar();
+              Navigator.of(context).pushNamed(ExploreMenuScreen.routeName);
             },
             icon: Icons.local_pizza,
             text: 'Menu',

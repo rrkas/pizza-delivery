@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/screens/auth_screen.dart';
 import 'package:pizza_delivery/screens/cart_screen.dart';
+import 'package:pizza_delivery/screens/explore_menu_screen.dart';
+import 'package:pizza_delivery/screens/my_fav_screen.dart';
 import 'package:pizza_delivery/screens/orders_screen.dart';
-import 'package:pizza_delivery/screens/pizza_list_screen.dart';
 
 import 'models/demo_data.dart';
 import 'screens/home_screen.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (_) => HomeScreen(),
         OrdersScreen.routeName: (_) => OrdersScreen(),
         CartScreen.routeName: (_) => CartScreen(),
-        PizzaListScreen.routeName: (_) => PizzaListScreen(),
+        ExploreMenuScreen.routeName: (_) => ExploreMenuScreen(),
+        MyFavScreen.routeName: (_) => MyFavScreen(),
       },
     );
   }

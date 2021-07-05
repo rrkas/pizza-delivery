@@ -31,7 +31,7 @@ flutter:
     - assets/images/beverages/
     - assets/images/pizzas/
     - assets/images/toppings/
-#    - assets/images/menus/
+    - assets/images/menus/
     - assets/data/
 
 #  fonts:

@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizza_delivery/screens/explore_menu_screen.dart';
 
 class HomeExploreMenuWidget extends StatelessWidget {
-  final String imgName, name, routeName;
-  final List items;
+  final String imgName, name;
+  final int idx;
 
-  const HomeExploreMenuWidget({Key key, this.imgName, this.name, this.routeName, this.items}) : super(key: key);
+  const HomeExploreMenuWidget({Key key, this.imgName, this.name, this.idx}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(routeName, arguments: [name, items]);
+        Navigator.of(context).pushNamed(ExploreMenuScreen.routeName, arguments: idx);
       },
       child: Card(
         elevation: 4,

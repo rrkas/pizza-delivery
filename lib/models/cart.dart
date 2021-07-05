@@ -11,7 +11,7 @@ class Cart {
   Map<Topping, int> toppings;
   double totalAmt;
 
-  Cart({this.beverages, this.toppings, this.pizzaManias, this.pizzas}) {
+  Cart({this.beverages = const {}, this.toppings = const {}, this.pizzaManias = const {}, this.pizzas = const {}}) {
     totalAmt = 0;
     beverages?.forEach((key, value) => totalAmt += key.priceINR * value);
     pizzas?.forEach((key, value) => totalAmt += key.priceINR * value);

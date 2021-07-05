@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import 'package:pizza_delivery/services/database_services.dart';
 
 import 'beverage.dart';
 import 'pizza.dart';
@@ -32,6 +33,7 @@ class DemoData {
       bestSellers.add(t[idx]);
     }
     bestSellers.shuffle();
+    FavDatabaseHandler.getFav;
   }
 
   static Future _loadPizza() async {

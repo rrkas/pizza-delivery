@@ -10,7 +10,7 @@ enum OrderStatus { Waiting, Processing, Delivered }
 
 class Order {
   int id;
-  DateTime datetime;
+  DateTime datetime = DateTime.now();
   Map<Pizza, int> pizzas, pizzaManias;
   Map<Beverage, int> beverages;
   Map<Topping, int> toppings;
@@ -18,10 +18,10 @@ class Order {
   OrderStatus orderStatus;
 
   Order.fromCart(Cart cart) {
-    pizzas = cart.pizzas;
-    pizzaManias = cart.pizzaManias;
-    toppings = cart.toppings;
-    beverages = cart.beverages;
+    pizzas = cart?.pizzas ?? {};
+    pizzaManias = cart?.pizzaManias ?? {};
+    toppings = cart?.toppings ?? {};
+    beverages = cart?.beverages ?? {};
     totalAmt = cart.totalAmt;
     orderStatus = OrderStatus.Waiting;
   }

@@ -1,7 +1,11 @@
 import 'package:path/path.dart';
+import 'package:pizza_delivery/models/beverage.dart';
 import 'package:pizza_delivery/models/cart.dart';
+import 'package:pizza_delivery/models/demo_data.dart';
 import 'package:pizza_delivery/models/fav.dart';
 import 'package:pizza_delivery/models/order.dart';
+import 'package:pizza_delivery/models/pizza.dart';
+import 'package:pizza_delivery/models/topping.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -60,21 +64,83 @@ class CartDatabaseHandler {
     final sp = await SharedPreferences.getInstance();
     sp.setString(_spName, cart.toDB);
   }
+
+  static Future<void> convertToOrder() async {
+    final cart = await getCart;
+    await setCart(Cart());
+    await OrderDatabaseHandler.insertOrder(Order.fromCart(cart));
+  }
 }
 
 class FavDatabaseHandler {
   static const _spName = 'fav';
+  static Fav fav;
 
   static Future<Fav> get getFav async {
     final sp = await SharedPreferences.getInstance();
     if (sp.containsKey(_spName)) {
-      return Fav.fromDB(sp.getString(_spName));
+      fav = Fav.fromDB(sp.getString(_spName));
+    } else {
+      fav = Fav();
     }
-    return Fav();
+    print('getFav: ' + fav.toDB);
+    return fav;
   }
 
-  static Future<void> setFav(Fav fav) async {
+  static Future<void> setFav(Fav fav1) async {
+    fav = fav1;
     final sp = await SharedPreferences.getInstance();
-    sp.setString(_spName, fav.toDB);
+    print('setFav: ' + fav.toDB);
+    final res = await sp.setString(_spName, fav.toDB);
+    print('setFav: $res');
+  }
+
+  static Future<Fav> togglePizza(Pizza pizza) async {
+    if ((DemoData.pizzas[true] + DemoData.pizzas[false]).contains(pizza)) {
+      if ((fav.pizzas ?? []).contains(pizza)) {
+        fav.pizzas.remove(pizza);
+      } else {
+        if (fav.pizzas == null) {
+          fav.pizzas = [pizza];
+        } else {
+          fav.pizzas.add(pizza);
+        }
+      }
+    } else {
+      if ((fav.pizzaManias ?? []).contains(pizza)) {
+        fav.pizzaManias.remove(pizza);
+      } else {
+        if (fav.pizzaManias == null) {
+          fav.pizzaManias = [pizza];
+        } else {
+          fav.pizzaManias.add(pizza);
+        }
+      }
+    }
+    await setFav(fav);
+    print('togglePizza: ' + fav.toDB);
+    return fav;
+  }
+
+  static Future<Fav> toggleBeverage(Beverage bev) async {
+    if (fav.beverages.contains(bev)) {
+      fav.beverages.remove(bev);
+    } else {
+      fav.beverages.add(bev);
+    }
+    await setFav(fav);
+    print('toggleBeverage: ' + fav.toDB);
+    return fav;
+  }
+
+  static Future<Fav> toggleTopping(Topping top) async {
+    if (fav.toppings.contains(top)) {
+      fav.toppings.remove(top);
+    } else {
+      fav.toppings.add(top);
+    }
+    await setFav(fav);
+    print('toggleTopping: ' + fav.toDB);
+    return fav;
   }
 }

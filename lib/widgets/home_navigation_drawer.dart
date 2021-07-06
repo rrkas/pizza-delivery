@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttericon/entypo_icons.dart';
 import 'package:pizza_delivery/screens/cart_screen.dart';
 import 'package:pizza_delivery/screens/explore_menu_screen.dart';
 import 'package:pizza_delivery/screens/my_fav_screen.dart';
@@ -89,11 +88,11 @@ class HomeNavigationDrawer extends StatelessWidget {
                       name: 'My Favourites',
                       routeName: MyFavScreen.routeName,
                     ),
-                    Divider(),
-                    _DrawerItem(
-                      icon: Entypo.user,
-                      name: 'Contact Us',
-                    ),
+                    // Divider(),
+                    // _DrawerItem(
+                    //   icon: Entypo.user,
+                    //   name: 'Contact Us',
+                    // ),
                   ],
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/topping.dart';
-import 'package:pizza_delivery/widgets/topping_list_widget.dart';
+
+import '../../models/topping.dart';
+import '../../widgets/topping_list_widget.dart';
 
 class ToppingListTab extends StatelessWidget {
   final List<Topping> toppings;

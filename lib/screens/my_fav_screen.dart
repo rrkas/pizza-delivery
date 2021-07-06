@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:pizza_delivery/screens/explore_menu_screen.dart';
-import 'package:pizza_delivery/services/database_services.dart';
-import 'package:pizza_delivery/widgets/beverage_list_widget.dart';
-import 'package:pizza_delivery/widgets/pizza_list_widget.dart';
-import 'package:pizza_delivery/widgets/topping_list_widget.dart';
+
+import '../services/database_services.dart';
+import '../widgets/beverage_list_widget.dart';
+import '../widgets/pizza_list_widget.dart';
+import '../widgets/topping_list_widget.dart';
+import 'explore_menu_screen.dart';
 
 class MyFavScreen extends StatefulWidget {
   static const routeName = '/fav-screen';

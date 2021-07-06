@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/widgets/pizza_list_widget.dart';
+
+import '../../models/pizza.dart';
+import '../../widgets/pizza_list_widget.dart';
 
 class PizzaListTab extends StatelessWidget {
   final List<Pizza> pizzas;

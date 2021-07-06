@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/demo_data.dart';
-import 'package:pizza_delivery/screens/menu_tabs/beverage_list_tab.dart';
-import 'package:pizza_delivery/screens/menu_tabs/pizza_list_tab.dart';
-import 'package:pizza_delivery/screens/menu_tabs/topping_list_tab.dart';
+
+import '../models/demo_data.dart';
+import 'menu_tabs/beverage_list_tab.dart';
+import 'menu_tabs/pizza_list_tab.dart';
+import 'menu_tabs/topping_list_tab.dart';
 
 class ExploreMenuScreen extends StatefulWidget {
   static const routeName = '/explore-menu';

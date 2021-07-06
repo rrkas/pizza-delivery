@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/models/cart.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/models/topping.dart';
-import 'package:pizza_delivery/services/database_services.dart';
+
+import '../models/beverage.dart';
+import '../models/cart.dart';
+import '../models/pizza.dart';
+import '../models/topping.dart';
+import '../services/database_services.dart';
 
 class CartScreen extends StatefulWidget {
   static const routeName = '/cart';
@@ -25,7 +26,7 @@ class _CartScreenState extends State<CartScreen> {
         future: CartDatabaseHandler.getCart,
         builder: (ctx, snap) {
           return snap.connectionState != ConnectionState.done
-              ? Center(child: Text('Loading'))
+              ? Center(child: Text('Loading...'))
               : snap.data.totalAmt == 0
                   ? Center(
                       child: FittedBox(

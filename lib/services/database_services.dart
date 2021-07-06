@@ -1,13 +1,14 @@
 import 'package:path/path.dart';
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/models/cart.dart';
-import 'package:pizza_delivery/models/demo_data.dart';
-import 'package:pizza_delivery/models/fav.dart';
-import 'package:pizza_delivery/models/order.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/models/topping.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../models/beverage.dart';
+import '../models/cart.dart';
+import '../models/demo_data.dart';
+import '../models/fav.dart';
+import '../models/order.dart';
+import '../models/pizza.dart';
+import '../models/topping.dart';
 
 class OrderDatabaseHandler {
   static Database _db;

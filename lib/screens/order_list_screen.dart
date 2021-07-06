@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/models/order.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/models/topping.dart';
-import 'package:pizza_delivery/services/database_services.dart';
+
+import '../models/beverage.dart';
+import '../models/order.dart';
+import '../models/pizza.dart';
+import '../models/topping.dart';
+import '../services/database_services.dart';
 
 class OrderListScreen extends StatelessWidget {
   static const routeName = '/order-list';
@@ -89,11 +90,6 @@ class _OrderWidget extends StatelessWidget {
                       DateFormat('dd MMM yyyy').format(_order.datetime),
                       style: TextStyle(fontSize: 16),
                     ),
-                    // Spacer(),
-                    // Text(
-                    //   _order.orderStatus.toString().split('.').last,
-                    //   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                    // ),
                     Spacer(),
                     Text(
                       DateFormat('HH:mm:ss').format(_order.datetime) + ' IST',

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/demo_data.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/services/database_services.dart';
-import 'package:pizza_delivery/utils/ref_utils.dart';
+
+import '../models/demo_data.dart';
+import '../models/pizza.dart';
+import '../services/database_services.dart';
+import '../utils/ref_utils.dart';
 
 class PizzaListWidget extends StatefulWidget {
   final Pizza pizza;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/screens/auth_screen.dart';
-import 'package:pizza_delivery/services/auth_service.dart';
 
+import '../services/auth_service.dart';
 import '../utils/ref_utils.dart';
+import 'auth_screen.dart';
 import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/services/database_services.dart';
-import 'package:pizza_delivery/utils/ref_utils.dart';
+
+import '../models/beverage.dart';
+import '../services/database_services.dart';
+import '../utils/ref_utils.dart';
 
 class BeverageListWidget extends StatefulWidget {
   final Beverage bev;

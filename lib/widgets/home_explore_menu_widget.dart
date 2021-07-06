@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/screens/explore_menu_screen.dart';
+
+import '../screens/explore_menu_screen.dart';
 
 class HomeExploreMenuWidget extends StatelessWidget {
   final String imgName, name;

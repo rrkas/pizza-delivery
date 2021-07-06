@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/screens/cart_screen.dart';
-import 'package:pizza_delivery/screens/explore_menu_screen.dart';
-import 'package:pizza_delivery/screens/my_fav_screen.dart';
-import 'package:pizza_delivery/screens/order_list_screen.dart';
-import 'package:pizza_delivery/screens/order_track_screen.dart';
-import 'package:pizza_delivery/services/auth_service.dart';
+
+import '../screens/cart_screen.dart';
+import '../screens/explore_menu_screen.dart';
+import '../screens/my_fav_screen.dart';
+import '../screens/order_list_screen.dart';
+import '../screens/order_track_screen.dart';
+import '../services/auth_service.dart';
 
 class HomeNavigationDrawer extends StatelessWidget {
   @override
@@ -63,10 +64,6 @@ class HomeNavigationDrawer extends StatelessWidget {
                       name: 'Menu',
                       routeName: ExploreMenuScreen.routeName,
                     ),
-                    // _DrawerItem(
-                    //   icon: Icons.local_offer_outlined,
-                    //   name: 'Deals & Offers',
-                    // ),
                     _DrawerItem(
                       icon: Icons.shopping_cart,
                       name: 'My Cart',
@@ -88,11 +85,6 @@ class HomeNavigationDrawer extends StatelessWidget {
                       name: 'My Favourites',
                       routeName: MyFavScreen.routeName,
                     ),
-                    // Divider(),
-                    // _DrawerItem(
-                    //   icon: Entypo.user,
-                    //   name: 'Contact Us',
-                    // ),
                   ],
                 ),
               ),

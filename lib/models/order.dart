@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/models/cart.dart';
-import 'package:pizza_delivery/models/demo_data.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/models/topping.dart';
+import 'beverage.dart';
+import 'cart.dart';
+import 'demo_data.dart';
+import 'pizza.dart';
+import 'topping.dart';
 
 enum OrderStatus { Waiting, Processing, Delivered }
 

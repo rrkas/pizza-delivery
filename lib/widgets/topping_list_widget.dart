@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/topping.dart';
-import 'package:pizza_delivery/services/database_services.dart';
-import 'package:pizza_delivery/utils/ref_utils.dart';
+
+import '../models/topping.dart';
+import '../services/database_services.dart';
+import '../utils/ref_utils.dart';
 
 class ToppingListWidget extends StatefulWidget {
   final Topping topping;

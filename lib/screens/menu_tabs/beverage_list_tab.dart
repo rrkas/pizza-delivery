@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/widgets/beverage_list_widget.dart';
+
+import '../../models/beverage.dart';
+import '../../widgets/beverage_list_widget.dart';
 
 class BeverageListTab extends StatelessWidget {
   final List<Beverage> beverages;

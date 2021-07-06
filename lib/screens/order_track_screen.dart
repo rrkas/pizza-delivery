@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:pizza_delivery/models/beverage.dart';
-import 'package:pizza_delivery/models/order.dart';
-import 'package:pizza_delivery/models/pizza.dart';
-import 'package:pizza_delivery/models/topping.dart';
-import 'package:pizza_delivery/services/database_services.dart';
+
+import '../models/beverage.dart';
+import '../models/order.dart';
+import '../models/pizza.dart';
+import '../models/topping.dart';
+import '../services/database_services.dart';
 
 class OrderTrackScreen extends StatefulWidget {
   static const routeName = '/order-track';
@@ -23,9 +24,7 @@ class _OrderTrackScreenState extends State<OrderTrackScreen> {
           future: OrderDatabaseHandler.orders,
           builder: (ctx, snap) {
             return snap.connectionState != ConnectionState.done
-                ? Center(
-                    child: Text('Loading...'),
-                  )
+                ? Center(child: Text('Loading...'))
                 : (!snap.hasData || (snap.hasData && snap.data.isEmpty))
                     ? Center(
                         child: Text(
@@ -160,7 +159,6 @@ class _OrderWidget extends StatelessWidget {
         width: double.infinity,
       ),
     );
-    // return Icon(Icons.arrow_right_alt, color: color, size: 40);
   }
 
   Widget sectionTitle(String title) {
@@ -169,6 +167,7 @@ class _OrderWidget extends StatelessWidget {
       children: [
         Divider(indent: 40, thickness: 1, color: Colors.grey[400]),
         Container(
+          color: Colors.white,
           margin: EdgeInsets.symmetric(vertical: 1),
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Text(

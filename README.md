@@ -14,6 +14,7 @@ This is a mobile application designed to order and track delivery of pizza.
 
 ## Features
 
-1. Google login
+1. Login
 2. Order Pizza
 3. Track Delivery
+4. favorites

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/screens/home_screen.dart';
-import 'package:pizza_delivery/services/auth_service.dart';
-import 'package:pizza_delivery/utils/ref_utils.dart';
-import 'package:pizza_delivery/utils/widget_utils.dart';
+
+import '../services/auth_service.dart';
+import '../utils/ref_utils.dart';
+import '../utils/widget_utils.dart';
+import 'home_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   static const routeName = '/auth';
@@ -53,7 +54,6 @@ class _AuthScreenState extends State<AuthScreen> {
                 decoration: WidgetUtils.customInputDecoration(context).copyWith(
                   hintText: 'Mobile',
                   prefixIcon: Icon(Icons.phone, color: Theme.of(context).primaryColor),
-                  // prefixText: '+91-',
                 ),
                 style: WidgetUtils.customInputDecoration(context).hintStyle,
                 keyboardType: TextInputType.phone,

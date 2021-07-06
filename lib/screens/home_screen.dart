@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/models/demo_data.dart';
-import 'package:pizza_delivery/screens/cart_screen.dart';
-import 'package:pizza_delivery/screens/explore_menu_screen.dart';
-import 'package:pizza_delivery/utils/ref_utils.dart';
-import 'package:pizza_delivery/widgets/home_bestseller_widget.dart';
-import 'package:pizza_delivery/widgets/home_explore_menu_widget.dart';
-import 'package:pizza_delivery/widgets/home_navigation_drawer.dart';
 
+import '../models/demo_data.dart';
+import '../utils/ref_utils.dart';
+import '../widgets/home_bestseller_widget.dart';
+import '../widgets/home_explore_menu_widget.dart';
 import '../widgets/home_float_button.dart';
+import '../widgets/home_navigation_drawer.dart';
+import 'cart_screen.dart';
+import 'explore_menu_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         titleSpacing: 0,
         title: Text(RefUtils.appName),
-        // automaticallyImplyLeading: false,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),

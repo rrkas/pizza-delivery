@@ -3,7 +3,8 @@ import 'package:pizza_delivery/screens/auth_screen.dart';
 import 'package:pizza_delivery/screens/cart_screen.dart';
 import 'package:pizza_delivery/screens/explore_menu_screen.dart';
 import 'package:pizza_delivery/screens/my_fav_screen.dart';
-import 'package:pizza_delivery/screens/orders_screen.dart';
+import 'package:pizza_delivery/screens/order_list_screen.dart';
+import 'package:pizza_delivery/screens/order_track_screen.dart';
 
 import 'models/demo_data.dart';
 import 'screens/home_screen.dart';
@@ -43,10 +44,11 @@ class MyApp extends StatelessWidget {
         SplashScreen.routeName: (_) => SplashScreen(),
         AuthScreen.routeName: (_) => AuthScreen(),
         HomeScreen.routeName: (_) => HomeScreen(),
-        OrdersScreen.routeName: (_) => OrdersScreen(),
+        OrderListScreen.routeName: (_) => OrderListScreen(),
         CartScreen.routeName: (_) => CartScreen(),
         ExploreMenuScreen.routeName: (_) => ExploreMenuScreen(),
         MyFavScreen.routeName: (_) => MyFavScreen(),
+        OrderTrackScreen.routeName: (_) => OrderTrackScreen(),
       },
     );
   }

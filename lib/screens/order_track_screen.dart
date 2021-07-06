@@ -7,15 +7,18 @@ import 'package:pizza_delivery/models/pizza.dart';
 import 'package:pizza_delivery/models/topping.dart';
 import 'package:pizza_delivery/services/database_services.dart';
 
-class OrdersScreen extends StatelessWidget {
-  static const routeName = '/orders';
+class OrderTrackScreen extends StatefulWidget {
+  static const routeName = '/order-track';
 
+  @override
+  _OrderTrackScreenState createState() => _OrderTrackScreenState();
+}
+
+class _OrderTrackScreenState extends State<OrderTrackScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My Orders'),
-      ),
+      appBar: AppBar(title: Text('Track Orders')),
       body: FutureBuilder<List<Order>>(
           future: OrderDatabaseHandler.orders,
           builder: (ctx, snap) {
@@ -34,7 +37,7 @@ class OrdersScreen extends StatelessWidget {
                     : ListView.builder(
                         padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                         itemCount: snap.data.length,
-                        itemBuilder: (_, idx) => _OrderWidget(snap.data[idx]),
+                        itemBuilder: (_, idx) => _OrderWidget(snap.data[idx], setState),
                       );
           }),
     );
@@ -43,78 +46,129 @@ class OrdersScreen extends StatelessWidget {
 
 class _OrderWidget extends StatelessWidget {
   final Order _order;
+  final void Function(void Function()) setState;
 
-  const _OrderWidget(this._order);
+  const _OrderWidget(this._order, this.setState);
 
   @override
   Widget build(BuildContext context) {
-    Color bgcolor = _order.orderStatus == OrderStatus.Waiting
-        ? Colors.red[50]
-        : _order.orderStatus == OrderStatus.Processing
-            ? Colors.yellow[100]
-            : Colors.green[50];
-    return Card(
-      elevation: 4,
-      color: bgcolor,
-      child: Container(
-        padding: EdgeInsets.all(5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                children: [
-                  Text(
-                    DateFormat('dd MMM yyyy').format(_order.datetime),
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Spacer(),
-                  Text(
-                    _order.orderStatus.toString().split('.').last,
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                  ),
-                  Spacer(),
-                  Text(
-                    DateFormat('HH:mm:ss').format(_order.datetime) + ' IST',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      child: Card(
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.all(5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Row(
+                  children: [
+                    Text(
+                      DateFormat('dd MMM yyyy').format(_order.datetime),
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Spacer(),
+                    Text(
+                      DateFormat('HH:mm:ss').format(_order.datetime) + ' IST',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 5),
-            header,
-            if (_order.pizzaManias.isNotEmpty) ...[
-              sectionTitle('Pizza Mania', bgcolor),
-              ..._order.pizzaManias.entries.map((e) => pizzaItem(e)).toList(),
+              SizedBox(height: 5),
+              header,
+              if (_order.pizzaManias.isNotEmpty) ...[
+                sectionTitle('Pizza Mania'),
+                ..._order.pizzaManias.entries.map((e) => pizzaItem(e)).toList(),
+              ],
+              if (_order.pizzas.isNotEmpty) ...[
+                sectionTitle('Pizza'),
+                ..._order.pizzas.entries.map((e) => pizzaItem(e)).toList(),
+              ],
+              if (_order.toppings.isNotEmpty) ...[
+                sectionTitle('Toppings'),
+                ..._order.toppings.entries.map((e) => toppingItem(e)).toList(),
+              ],
+              if (_order.beverages.isNotEmpty) ...[
+                sectionTitle('Beverage'),
+                ..._order.beverages.entries.map((e) => beverageItem(e)).toList(),
+              ],
+              Divider(),
+              totalAmt(_order.totalAmt),
+              progress(context)
             ],
-            if (_order.pizzas.isNotEmpty) ...[
-              sectionTitle('Pizza', bgcolor),
-              ..._order.pizzas.entries.map((e) => pizzaItem(e)).toList(),
-            ],
-            if (_order.toppings.isNotEmpty) ...[
-              sectionTitle('Toppings', bgcolor),
-              ..._order.toppings.entries.map((e) => toppingItem(e)).toList(),
-            ],
-            if (_order.beverages.isNotEmpty) ...[
-              sectionTitle('Beverage', bgcolor),
-              ..._order.beverages.entries.map((e) => beverageItem(e)).toList(),
-            ],
-            Divider(),
-            totalAmt(_order.totalAmt),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Widget sectionTitle(String title, Color bgcolor) {
+  Widget progress(context) {
+    final doneColor = Colors.indigo;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              progressIcon(Icons.add_outlined, doneColor),
+              progressIntermediate(doneColor),
+              progressIcon(Icons.local_fire_department, [OrderStatus.Delivered, OrderStatus.Processing].contains(_order.orderStatus) ? doneColor : null),
+              progressIntermediate([OrderStatus.Delivered, OrderStatus.Processing].contains(_order.orderStatus) ? doneColor : null),
+              progressIcon(Icons.verified, _order.orderStatus == OrderStatus.Delivered ? doneColor : null),
+            ],
+          ),
+          if (_order.orderStatus != OrderStatus.Delivered)
+            FlatButton(
+              onPressed: () async {
+                final idx = OrderStatus.values.indexOf(_order.orderStatus);
+                _order.orderStatus = OrderStatus.values[idx + 1];
+                await OrderDatabaseHandler.updateOrder(_order);
+                setState(() {});
+              },
+              child: Text('Update order!'),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget progressIcon(IconData icon, [Color color]) {
+    if (color == null) color = Colors.grey;
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: color, width: 2),
+        shape: BoxShape.circle,
+        color: color == Colors.grey ? Colors.white : color,
+      ),
+      padding: EdgeInsets.all(4),
+      child: Icon(icon, color: color == Colors.grey ? color : Colors.white, size: 25),
+    );
+  }
+
+  Widget progressIntermediate([Color color]) {
+    if (color == null) color = Colors.grey;
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: color,
+        ),
+        height: color == Colors.grey ? 2 : 4,
+        width: double.infinity,
+      ),
+    );
+    // return Icon(Icons.arrow_right_alt, color: color, size: 40);
+  }
+
+  Widget sectionTitle(String title) {
     return Stack(
       alignment: Alignment.centerLeft,
       children: [
         Divider(indent: 40, thickness: 1, color: Colors.grey[400]),
         Container(
-          color: bgcolor,
           margin: EdgeInsets.symmetric(vertical: 1),
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Text(

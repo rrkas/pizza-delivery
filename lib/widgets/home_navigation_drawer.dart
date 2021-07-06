@@ -4,7 +4,8 @@ import 'package:fluttericon/entypo_icons.dart';
 import 'package:pizza_delivery/screens/cart_screen.dart';
 import 'package:pizza_delivery/screens/explore_menu_screen.dart';
 import 'package:pizza_delivery/screens/my_fav_screen.dart';
-import 'package:pizza_delivery/screens/orders_screen.dart';
+import 'package:pizza_delivery/screens/order_list_screen.dart';
+import 'package:pizza_delivery/screens/order_track_screen.dart';
 import 'package:pizza_delivery/services/auth_service.dart';
 
 class HomeNavigationDrawer extends StatelessWidget {
@@ -76,11 +77,12 @@ class HomeNavigationDrawer extends StatelessWidget {
                     _DrawerItem(
                       icon: Icons.not_listed_location_outlined,
                       name: 'Track Orders',
+                      routeName: OrderTrackScreen.routeName,
                     ),
                     _DrawerItem(
                       icon: Icons.compare_arrows,
                       name: 'Order History',
-                      routeName: OrdersScreen.routeName,
+                      routeName: OrderListScreen.routeName,
                     ),
                     _DrawerItem(
                       icon: Icons.favorite_border,

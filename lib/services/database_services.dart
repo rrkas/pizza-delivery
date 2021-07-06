@@ -41,6 +41,11 @@ class OrderDatabaseHandler {
     return await db.insert(_tableName, order.toDB, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
+  static Future<void> updateOrder(Order order) async {
+    final db = await _orderdb;
+    await db.update(_tableName, order.toDB, where: 'id = ?', whereArgs: [order.id]);
+  }
+
   static Future<List<Order>> get orders async {
     final db = await _orderdb;
     List<Map<String, dynamic>> data = await db.query(_tableName);

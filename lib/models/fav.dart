@@ -6,11 +6,16 @@ import 'pizza.dart';
 import 'topping.dart';
 
 class Fav {
-  List<Pizza> pizzas, pizzaManias;
-  List<Beverage> beverages;
-  List<Topping> toppings;
+  List<Pizza> pizzas = [], pizzaManias = [];
+  List<Beverage> beverages = [];
+  List<Topping> toppings = [];
 
-  Fav({this.beverages = const [], this.toppings = const [], this.pizzaManias = const [], this.pizzas = const []});
+  Fav({this.beverages, this.toppings, this.pizzaManias, this.pizzas}) {
+    this.toppings = this.toppings ?? [];
+    this.pizzas = this.pizzas ?? [];
+    this.pizzaManias = this.pizzaManias ?? [];
+    this.beverages = this.beverages ?? [];
+  }
 
   Fav.fromDB(String data) {
     final d = json.decode(data);

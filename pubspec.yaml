@@ -12,7 +12,7 @@ dependencies:
   cupertino_icons:
   provider:
   shared_preferences:
-  csv:
+  csv: ^4.1.0
   sqflite:
   fluttericon:
   path:

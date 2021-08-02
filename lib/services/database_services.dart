@@ -96,9 +96,7 @@ class FavDatabaseHandler {
   static Future<void> setFav(Fav fav1) async {
     fav = fav1;
     final sp = await SharedPreferences.getInstance();
-    print('setFav: ' + fav.toDB);
-    final res = await sp.setString(_spName, fav.toDB);
-    print('setFav: $res');
+    await sp.setString(_spName, fav.toDB);
   }
 
   static Future<Fav> togglePizza(Pizza pizza) async {
@@ -107,7 +105,7 @@ class FavDatabaseHandler {
         fav.pizzas.remove(pizza);
       } else {
         if (fav.pizzas == null) {
-          fav.pizzas = [pizza];
+          fav.pizzas = List.of([pizza]);
         } else {
           fav.pizzas.add(pizza);
         }
@@ -117,7 +115,7 @@ class FavDatabaseHandler {
         fav.pizzaManias.remove(pizza);
       } else {
         if (fav.pizzaManias == null) {
-          fav.pizzaManias = [pizza];
+          fav.pizzaManias = List.of([pizza]);
         } else {
           fav.pizzaManias.add(pizza);
         }
